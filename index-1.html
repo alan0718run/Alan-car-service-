@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0b1220">
+  <meta name="description" content="ALAN CAR SERVICE บริการรถรับส่งสนามบินสุวรรณภูมิ ดอนเมือง รถพร้อมคนขับ และท่องเที่ยวทั่วไทย บริการส่วนตัวระดับ VIP">
+  <title>ALAN CAR SERVICE | VIP Private Chauffeur</title>
+
+  <!-- External design libraries -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&family=Prompt:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: { prompt: ['Prompt', 'sans-serif'], kanit: ['Kanit', 'sans-serif'] },
+          colors: {
+            alan: { navy: '#0b1220', panel: '#111c2e', gold: '#e8b75a', pale: '#f7f3e9', blue: '#1e4d7b' }
+          },
+          boxShadow: { glow: '0 18px 55px rgba(232,183,90,.15)' }
+        }
+      }
+    };
+  </script>
+  <style>
+    :root { color-scheme: dark; }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 90px; }
+    body { margin: 0; font-family: 'Prompt', sans-serif; background: #0b1220; color: #f8fafc; }
+    .hero {
+      background:
+        linear-gradient(90deg, rgba(7,13,24,.96) 0%, rgba(7,13,24,.82) 48%, rgba(7,13,24,.25) 100%),
+        url('https://images.unsplash.com/photo-1511919884226-fd3cad34687c?auto=format&fit=crop&w=2000&q=85') center/cover no-repeat;
+    }
+    .glass { background: rgba(17,28,46,.82); backdrop-filter: blur(14px); }
+    .gold-text { background: linear-gradient(100deg,#f7dfa4,#e8b75a 55%,#fff0bf); -webkit-background-clip:text; background-clip:text; color:transparent; }
+    .section-kicker { color:#e8b75a; letter-spacing:.18em; font-size:.75rem; font-weight:600; text-transform:uppercase; }
+    .service-card { border:1px solid rgba(255,255,255,.09); transition:transform .25s ease,border-color .25s ease,background .25s ease; }
+    .service-card:hover { transform:translateY(-5px); border-color:rgba(232,183,90,.55); background:rgba(255,255,255,.06); }
+    .focus-ring:focus-visible { outline:3px solid #e8b75a; outline-offset:3px; }
+    .mobile-menu { display:none; }
+    .mobile-menu.open { display:block; }
+    @media (max-width: 767px) {
+      .hero { background-position: 60% center; }
+      .hero-shade { background:linear-gradient(90deg,rgba(7,13,24,.94),rgba(7,13,24,.70)); }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior:auto; }
+      *, *::before, *::after { animation-duration:.01ms !important; transition-duration:.01ms !important; }
+    }
+  </style>
+</head>
+<body class="antialiased">
+  <a href="#main" class="focus-ring sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[100] focus:bg-white focus:text-black focus:px-4 focus:py-2 rounded">ข้ามไปยังเนื้อหาหลัก</a>
+
+  <!-- Navigation -->
+  <header class="sticky top-0 z-50 border-b border-white/10 bg-[#0b1220]/90 backdrop-blur-xl">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="h-[76px] flex items-center justify-between gap-3">
+        <a href="#home" class="flex items-center gap-3 min-w-0" aria-label="ALAN CAR SERVICE home">
+          <span class="w-11 h-11 rounded-xl bg-gradient-to-br from-amber-200 to-amber-600 text-slate-950 flex items-center justify-center shadow-glow shrink-0"><i class="fa-solid fa-car-side text-xl"></i></span>
+          <span class="min-w-0">
+            <span class="block font-bold tracking-wide text-sm sm:text-lg leading-tight">ALAN CAR SERVICE</span>
+            <span class="block text-[10px] sm:text-xs tracking-[.18em] text-amber-300 uppercase mt-1">VIP Private Chauffeur</span>
+          </span>
+        </a>
+
+        <nav class="hidden lg:flex items-center gap-6 text-sm text-slate-300" aria-label="Main navigation">
+          <a class="hover:text-amber-300 transition" href="#services" data-i18n="nav_services">บริการของเรา</a>
+          <a class="hover:text-amber-300 transition" href="#fleet" data-i18n="nav_fleet">รถบริการ</a>
+          <a class="hover:text-amber-300 transition" href="#destinations" data-i18n="nav_destinations">เส้นทางยอดนิยม</a>
+          <a class="hover:text-amber-300 transition" href="#booking" data-i18n="nav_booking">จองรถ</a>
+          <a class="hover:text-amber-300 transition" href="#contact" data-i18n="nav_contact">ติดต่อเรา</a>
+        </nav>
+
+        <div class="hidden md:flex items-center gap-3">
+          <label for="languageSelect" class="sr-only">Choose language</label>
+          <select id="languageSelect" class="focus-ring bg-white/5 border border-white/15 rounded-lg px-3 py-2 text-sm text-white" aria-label="Choose language">
+            <option value="th">🇹🇭 ไทย</option>
+            <option value="zh">🇨🇳 中文</option>
+            <option value="en">🇬🇧 English</option>
+            <option value="my">🇲🇲 မြန်မာ</option>
+          </select>
+          <a href="https://line.me/ti/p/~alancarservice" target="_blank" rel="noopener noreferrer" class="focus-ring inline-flex items-center gap-2 rounded-lg bg-amber-400 hover:bg-amber-300 text-slate-950 px-4 py-2.5 font-semibold text-sm transition">
+            <i class="fa-brands fa-line text-lg"></i><span data-i18n="nav_line">แอดไลน์จองด่วน</span>
+          </a>
+        </div>
+
+        <div class="md:hidden flex items-center gap-2">
+          <label for="mobileLanguageSelect" class="sr-only">Choose language</label>
+          <select id="mobileLanguageSelect" class="focus-ring bg-white/5 border border-white/15 rounded-lg px-2 py-2 text-xs text-white" aria-label="Choose language">
+            <option value="th">🇹🇭 TH</option><option value="zh">🇨🇳 中文</option><option value="en">🇬🇧 EN</option><option value="my">🇲🇲 MY</option>
+          </select>
+          <button id="mobileMenuBtn" type="button" aria-expanded="false" aria-controls="mobileMenu" class="focus-ring w-10 h-10 rounded-lg border border-white/15 text-white" aria-label="Open menu">
+            <i class="fa-solid fa-bars"></i>
+          </button>
+        </div>
+      </div>
+      <nav id="mobileMenu" class="mobile-menu lg:hidden pb-4 space-y-1" aria-label="Mobile navigation">
+        <a class="block rounded-lg px-3 py-3 hover:bg-white/5" href="#services" data-i18n="nav_services">บริการของเรา</a>
+        <a class="block rounded-lg px-3 py-3 hover:bg-white/5" href="#fleet" data-i18n="nav_fleet">รถบริการ</a>
+        <a class="block rounded-lg px-3 py-3 hover:bg-white/5" href="#destinations" data-i18n="nav_destinations">เส้นทางยอดนิยม</a>
+        <a class="block rounded-lg px-3 py-3 hover:bg-white/5" href="#booking" data-i18n="nav_booking">จองรถ</a>
+        <a class="block rounded-lg px-3 py-3 hover:bg-white/5" href="#contact" data-i18n="nav_contact">ติดต่อเรา</a>
+        <a href="https://line.me/ti/p/~alancarservice" target="_blank" rel="noopener noreferrer" class="flex items-center justify-center gap-2 rounded-lg bg-amber-400 text-slate-950 px-4 py-3 font-semibold mt-2"><i class="fa-brands fa-line"></i><span data-i18n="nav_line">แอดไลน์จองด่วน</span></a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- Hero -->
+    <section id="home" class="hero relative min-h-[600px] md:min-h-[680px] flex items-center">
+      <div class="hero-shade absolute inset-0"></div>
+      <div class="relative max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-20 md:py-28">
+        <div class="max-w-3xl">
+          <div class="inline-flex items-center gap-2 rounded-full border border-amber-300/40 bg-black/25 px-4 py-2 text-xs sm:text-sm text-amber-200 mb-6">
+            <i class="fa-solid fa-star"></i><span data-i18n="hero_badge">บริการรถส่วนตัวระดับ VIP</span>
+          </div>
+          <h1 class="text-4xl sm:text-5xl lg:text-7xl font-semibold leading-[1.18] tracking-tight">
+            <span data-i18n="hero_title_1">เดินทางอย่างมีระดับ</span><br>
+            <span class="gold-text" data-i18n="hero_title_2">ไปกับ ALAN CAR SERVICE</span>
+          </h1>
+          <p class="mt-6 text-base sm:text-lg text-slate-200 leading-8 max-w-2xl" data-i18n="hero_desc">
+            บริการรถรับส่งสนามบิน รถพร้อมคนขับ และเดินทางท่องเที่ยวทั่วไทย ใส่ใจทุกเส้นทาง สะดวกสบาย ตรงเวลา และเป็นส่วนตัว
+          </p>
+          <div class="flex flex-col sm:flex-row gap-3 mt-9">
+            <a href="#booking" class="focus-ring inline-flex justify-center items-center gap-3 rounded-xl bg-amber-400 hover:bg-amber-300 text-slate-950 font-bold px-7 py-4 transition shadow-glow"><i class="fa-solid fa-calendar-check"></i><span data-i18n="hero_book">สอบถามราคา / จองรถ</span></a>
+            <a href="https://line.me/ti/p/~alancarservice" target="_blank" rel="noopener noreferrer" class="focus-ring inline-flex justify-center items-center gap-3 rounded-xl border border-white/25 bg-white/5 hover:bg-white/10 px-7 py-4 font-semibold transition"><i class="fa-brands fa-line text-xl text-green-400"></i><span data-i18n="hero_line">แชตผ่าน LINE</span></a>
+          </div>
+          <div class="mt-10 flex flex-wrap gap-x-7 gap-y-3 text-sm text-slate-200">
+            <span><i class="fa-solid fa-plane-departure text-amber-300 mr-2"></i><span data-i18n="hero_point1">รับส่งสนามบิน</span></span>
+            <span><i class="fa-solid fa-route text-amber-300 mr-2"></i><span data-i18n="hero_point2">เดินทางทั่วไทย</span></span>
+            <span><i class="fa-solid fa-user-shield text-amber-300 mr-2"></i><span data-i18n="hero_point3">บริการส่วนตัว</span></span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Trust strip -->
+    <section class="border-y border-white/10 bg-white/[.025]">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 grid grid-cols-1 sm:grid-cols-3 gap-5">
+        <div class="flex items-center gap-3"><span class="w-11 h-11 rounded-full bg-amber-400/10 text-amber-300 flex items-center justify-center"><i class="fa-solid fa-clock"></i></span><div><p class="font-semibold" data-i18n="trust1_title">ตรงต่อเวลา</p><p class="text-sm text-slate-400" data-i18n="trust1_desc">วางแผนการเดินทางอย่างใส่ใจ</p></div></div>
+        <div class="flex items-center gap-3"><span class="w-11 h-11 rounded-full bg-amber-400/10 text-amber-300 flex items-center justify-center"><i class="fa-solid fa-car"></i></span><div><p class="font-semibold" data-i18n="trust2_title">สะดวกสบาย</p><p class="text-sm text-slate-400" data-i18n="trust2_desc">เดินทางแบบส่วนตัวตามแผนของคุณ</p></div></div>
+        <div class="flex items-center gap-3"><span class="w-11 h-11 rounded-full bg-amber-400/10 text-amber-300 flex items-center justify-center"><i class="fa-solid fa-comments"></i></span><div><p class="font-semibold" data-i18n="trust3_title">สื่อสารชัดเจน</p><p class="text-sm text-slate-400" data-i18n="trust3_desc">สอบถามเส้นทางและราคาได้ก่อนเดินทาง</p></div></div>
+      </div>
+    </section>
+
+    <!-- Services -->
+    <section id="services" class="py-20 md:py-24">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-2xl mb-10 md:mb-14">
+          <p class="section-kicker" data-i18n="services_kicker">Our Services</p>
+          <h2 class="text-3xl sm:text-4xl font-semibold mt-3" data-i18n="services_title">บริการที่ออกแบบเพื่อการเดินทางของคุณ</h2>
+          <p class="text-slate-400 mt-4 leading-7" data-i18n="services_desc">เลือกใช้บริการได้ตามจุดหมายและแผนการเดินทาง ติดต่อสอบถามรายละเอียดและราคาได้โดยตรง</p>
+        </div>
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+          <article class="service-card rounded-2xl p-6 md:p-7 bg-white/[.025]">
+            <div class="w-12 h-12 rounded-xl bg-amber-400/10 text-amber-300 flex items-center justify-center text-xl"><i class="fa-solid fa-plane"></i></div>
+            <h3 class="text-xl font-semibold mt-5" data-i18n="service1_title">รับส่งสนามบิน</h3>
+            <p class="text-slate-400 leading-7 mt-3" data-i18n="service1_desc">รับส่งสนามบินสุวรรณภูมิและดอนเมือง นัดหมายล่วงหน้าเพื่อการเดินทางที่ราบรื่น</p>
+          </article>
+          <article class="service-card rounded-2xl p-6 md:p-7 bg-white/[.025]">
+            <div class="w-12 h-12 rounded-xl bg-amber-400/10 text-amber-300 flex items-center justify-center text-xl"><i class="fa-solid fa-city"></i></div>
+            <h3 class="text-xl font-semibold mt-5" data-i18n="service2_title">รถพร้อมคนขับ</h3>
+            <p class="text-slate-400 leading-7 mt-3" data-i18n="service2_desc">เดินทางในกรุงเทพฯ ติดต่อธุรกิจ รับรองแขก หรือเดินทางตามกำหนดการของคุณ</p>
+          </article>
+          <article class="service-card rounded-2xl p-6 md:p-7 bg-white/[.025]">
+            <div class="w-12 h-12 rounded-xl bg-amber-400/10 text-amber-300 flex items-center justify-center text-xl"><i class="fa-solid fa-mountain-sun"></i></div>
+            <h3 class="text-xl font-semibold mt-5" data-i18n="service3_title">ท่องเที่ยวทั่วไทย</h3>
+            <p class="text-slate-400 leading-7 mt-3" data-i18n="service3_desc">เดินทางข้ามจังหวัด เที่ยวแบบส่วนตัว หรือวางแผนเส้นทางตามความต้องการ</p>
+          </article>
+          <article class="service-card rounded-2xl p-6 md:p-7 bg-white/[.025]">
+            <div class="w-12 h-12 rounded-xl bg-amber-400/10 text-amber-300 flex items-center justify-center text-xl"><i class="fa-solid fa-briefcase"></i></div>
+            <h3 class="text-xl font-semibold mt-5" data-i18n="service4_title">รับรองลูกค้าธุรกิจ</h3>
+            <p class="text-slate-400 leading-7 mt-3" data-i18n="service4_desc">เหมาะสำหรับนัดหมายทางธุรกิจ งานประชุม และการเดินทางของผู้บริหาร</p>
+          </article>
+          <article class="service-card rounded-2xl p-6 md:p-7 bg-white/[.025]">
+            <div class="w-12 h-12 rounded-xl bg-amber-400/10 text-amber-300 flex items-center justify-center text-xl"><i class="fa-solid fa-people-group"></i></div>
+            <h3 class="text-xl font-semibold mt-5" data-i18n="service5_title">เดินทางเป็นครอบครัว</h3>
+            <p class="text-slate-400 leading-7 mt-3" data-i18n="service5_desc">แจ้งจำนวนผู้โดยสารและสัมภาระ เพื่อช่วยเลือกประเภทรถให้เหมาะสม</p>
+          </article>
+          <article class="service-card rounded-2xl p-6 md:p-7 bg-white/[.025]">
+            <div class="w-12 h-12 rounded-xl bg-amber-400/10 text-amber-300 flex items-center justify-center text-xl"><i class="fa-solid fa-calendar-days"></i></div>
+            <h3 class="text-xl font-semibold mt-5" data-i18n="service6_title">จองล่วงหน้า</h3>
+            <p class="text-slate-400 leading-7 mt-3" data-i18n="service6_desc">แจ้งวัน เวลา จุดรับและจุดหมาย เพื่อประเมินราคาและยืนยันรายละเอียดก่อนเดินทาง</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Fleet -->
+    <section id="fleet" class="py-20 bg-[#101a2a] border-y border-white/5">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+        <div>
+          <p class="section-kicker" data-i18n="fleet_kicker">Your Ride, Your Way</p>
+          <h2 class="text-3xl sm:text-4xl font-semibold mt-3" data-i18n="fleet_title">เลือกรถให้เหมาะกับการเดินทาง</h2>
+          <p class="text-slate-400 mt-5 leading-8" data-i18n="fleet_desc">ประเภทรถและจำนวนที่นั่งขึ้นอยู่กับรถที่ให้บริการในวันเดินทาง กรุณาสอบถามและแจ้งจำนวนผู้โดยสารพร้อมสัมภาระก่อนยืนยันการจอง</p>
+          <ul class="mt-6 space-y-4 text-slate-200">
+            <li class="flex gap-3"><i class="fa-solid fa-check text-amber-300 mt-1"></i><span data-i18n="fleet_item1">แจ้งจำนวนผู้โดยสารและกระเป๋าเดินทาง</span></li>
+            <li class="flex gap-3"><i class="fa-solid fa-check text-amber-300 mt-1"></i><span data-i18n="fleet_item2">แจ้งเส้นทางและจุดแวะระหว่างทาง</span></li>
+            <li class="flex gap-3"><i class="fa-solid fa-check text-amber-300 mt-1"></i><span data-i18n="fleet_item3">สอบถามค่าทางด่วนและค่าใช้จ่ายเพิ่มเติมก่อนจอง</span></li>
+          </ul>
+          <a href="#booking" class="focus-ring inline-flex items-center gap-2 mt-8 rounded-lg border border-amber-300/60 text-amber-200 hover:bg-amber-300 hover:text-slate-950 px-5 py-3 transition"><span data-i18n="fleet_cta">สอบถามรถและราคา</span><i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+        <div class="rounded-3xl overflow-hidden border border-white/10 shadow-2xl">
+          <img src="https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?auto=format&fit=crop&w=1200&q=85" alt="รถยนต์สำหรับบริการรับส่งส่วนตัว" class="w-full h-[300px] sm:h-[420px] object-cover" loading="lazy">
+        </div>
+      </div>
+    </section>
+
+    <!-- Destinations -->
+    <section id="destinations" class="py-20 md:py-24">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-2xl mx-auto mb-12">
+          <p class="section-kicker" data-i18n="dest_kicker">Popular Routes</p>
+          <h2 class="text-3xl sm:text-4xl font-semibold mt-3" data-i18n="dest_title">เดินทางไปได้หลายจุดหมาย</h2>
+          <p class="text-slate-400 mt-4 leading-7" data-i18n="dest_desc">ตัวอย่างเส้นทางที่ลูกค้าสามารถสอบถามบริการได้ โดยราคาแตกต่างตามระยะทาง เวลา และรายละเอียดการเดินทาง</p>
+        </div>
+        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          <div class="rounded-2xl overflow-hidden bg-white/[.03] border border-white/10">
+            <img src="https://images.unsplash.com/photo-1508009603885-50cf7c579365?auto=format&fit=crop&w=700&q=80" alt="กรุงเทพมหานคร" class="h-40 w-full object-cover" loading="lazy">
+            <div class="p-5"><h3 class="font-semibold text-lg" data-i18n="dest1_title">กรุงเทพฯ</h3><p class="text-sm text-slate-400 mt-2" data-i18n="dest1_desc">เดินทางในเมืองและรับส่งตามนัดหมาย</p></div>
+          </div>
+          <div class="rounded-2xl overflow-hidden bg-white/[.03] border border-white/10">
+            <img src="https://images.unsplash.com/photo-1563492065599-3520f775eeed?auto=format&fit=crop&w=700&q=80" alt="สนามบินและการเดินทาง" class="h-40 w-full object-cover" loading="lazy">
+            <div class="p-5"><h3 class="font-semibold text-lg" data-i18n="dest2_title">สุวรรณภูมิ / ดอนเมือง</h3><p class="text-sm text-slate-400 mt-2" data-i18n="dest2_desc">บริการรับส่งสนามบินตามเวลานัดหมาย</p></div>
+          </div>
+          <div class="rounded-2xl overflow-hidden bg-white/[.03] border border-white/10">
+            <img src="https://images.unsplash.com/photo-1504214208698-ea1916a2195a?auto=format&fit=crop&w=700&q=80" alt="ถนนสำหรับเดินทางท่องเที่ยว" class="h-40 w-full object-cover" loading="lazy">
+            <div class="p-5"><h3 class="font-semibold text-lg" data-i18n="dest3_title">พัทยา / ชลบุรี</h3><p class="text-sm text-slate-400 mt-2" data-i18n="dest3_desc">เดินทางพักผ่อนหรือทำธุรกิจ</p></div>
+          </div>
+          <div class="rounded-2xl overflow-hidden bg-white/[.03] border border-white/10">
+            <img src="https://images.unsplash.com/photo-1518548419970-58e3b4079ab2?auto=format&fit=crop&w=700&q=80" alt="สถานที่ท่องเที่ยวในประเทศไทย" class="h-40 w-full object-cover" loading="lazy">
+            <div class="p-5"><h3 class="font-semibold text-lg" data-i18n="dest4_title">ท่องเที่ยวทั่วไทย</h3><p class="text-sm text-slate-400 mt-2" data-i18n="dest4_desc">สอบถามเส้นทางตามแผนของคุณ</p></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Booking -->
+    <section id="booking" class="py-20 bg-[#101a2a] border-y border-white/5">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-[.9fr_1.1fr] gap-10 lg:gap-16">
+        <div>
+          <p class="section-kicker" data-i18n="booking_kicker">Plan Your Trip</p>
+          <h2 class="text-3xl sm:text-4xl font-semibold mt-3" data-i18n="booking_title">แจ้งรายละเอียดการเดินทาง</h2>
+          <p class="text-slate-400 mt-5 leading-8" data-i18n="booking_desc">กรอกข้อมูลเบื้องต้น แล้วกดส่งข้อความเพื่อเปิด LINE พร้อมรายละเอียดที่กรอกไว้ให้ตรวจสอบก่อนส่งจริง</p>
+          <div class="mt-8 space-y-4 text-slate-300">
+            <p><i class="fa-solid fa-location-dot text-amber-300 w-6"></i><span data-i18n="booking_tip1">แจ้งจุดรับและจุดส่งให้ชัดเจน</span></p>
+            <p><i class="fa-solid fa-calendar-check text-amber-300 w-6"></i><span data-i18n="booking_tip2">ระบุวันและเวลาที่ต้องการเดินทาง</span></p>
+            <p><i class="fa-solid fa-sack-dollar text-amber-300 w-6"></i><span data-i18n="booking_tip3">ยืนยันราคา ค่าทางด่วน และค่าใช้จ่ายอื่นก่อนตกลง</span></p>
+          </div>
+        </div>
+
+        <form id="bookingForm" class="rounded-2xl border border-white/10 bg-white/[.035] p-5 sm:p-7 space-y-5">
+          <div class="grid sm:grid-cols-2 gap-4">
+            <div><label for="customerName" class="block text-sm text-slate-300 mb-2" data-i18n="form_name">ชื่อผู้ติดต่อ</label><input id="customerName" name="customerName" autocomplete="name" class="focus-ring w-full rounded-lg border border-white/15 bg-[#0b1220] px-4 py-3 text-white placeholder:text-slate-500" placeholder="ชื่อของคุณ" data-i18n-placeholder="form_name_ph"></div>
+            <div><label for="phone" class="block text-sm text-slate-300 mb-2" data-i18n="form_phone">เบอร์ติดต่อ / LINE</label><input id="phone" name="phone" autocomplete="tel" class="focus-ring w-full rounded-lg border border-white/15 bg-[#0b1220] px-4 py-3 text-white placeholder:text-slate-500" placeholder="เบอร์โทรหรือ LINE ID" data-i18n-placeholder="form_phone_ph"></div>
+          </div>
+          <div class="grid sm:grid-cols-2 gap-4">
+            <div><label for="pickup" class="block text-sm text-slate-300 mb-2" data-i18n="form_pickup">จุดรับ</label><input id="pickup" name="pickup" required class="focus-ring w-full rounded-lg border border-white/15 bg-[#0b1220] px-4 py-3 text-white placeholder:text-slate-500" placeholder="เช่น สนามบินสุวรรณภูมิ" data-i18n-placeholder="form_pickup_ph"></div>
+            <div><label for="destination" class="block text-sm text-slate-300 mb-2" data-i18n="form_destination">จุดหมาย</label><input id="destination" name="destination" required class="focus-ring w-full rounded-lg border border-white/15 bg-[#0b1220] px-4 py-3 text-white placeholder:text-slate-500" placeholder="สถานที่ปลายทาง" data-i18n-placeholder="form_destination_ph"></div>
+          </div>
+          <div class="grid sm:grid-cols-2 gap-4">
+            <div><label for="tripDate" class="block text-sm text-slate-300 mb-2" data-i18n="form_date">วันที่เดินทาง</label><input id="tripDate" name="tripDate" type="date" class="focus-ring w-full rounded-lg border border-white/15 bg-[#0b1220] px-4 py-3 text-white"></div>
+            <div><label for="tripTime" class="block text-sm text-slate-300 mb-2" data-i18n="form_time">เวลา</label><input id="tripTime" name="tripTime" type="time" class="focus-ring w-full rounded-lg border border-white/15 bg-[#0b1220] px-4 py-3 text-white"></div>
+          </div>
+          <div class="grid sm:grid-cols-2 gap-4">
+            <div><label for="passengers" class="block text-sm text-slate-300 mb-2" data-i18n="form_passengers">จำนวนผู้โดยสาร</label><select id="passengers" name="passengers" class="focus-ring w-full rounded-lg border border-white/15 bg-[#0b1220] px-4 py-3 text-white"><option value="1">1</option><option value="2" selected>2</option><option value="3">3</option><option value="4">4</option><option value="5+">5+</option></select></div>
+            <div><label for="luggage" class="block text-sm text-slate-300 mb-2" data-i18n="form_luggage">สัมภาระ / รายละเอียดเพิ่มเติม</label><input id="luggage" name="luggage" class="focus-ring w-full rounded-lg border border-white/15 bg-[#0b1220] px-4 py-3 text-white placeholder:text-slate-500" placeholder="จำนวนกระเป๋า จุดแวะ ฯลฯ" data-i18n-placeholder="form_luggage_ph"></div>
+          </div>
+          <button type="submit" class="focus-ring w-full rounded-xl bg-amber-400 hover:bg-amber-300 text-slate-950 font-bold px-5 py-4 transition flex items-center justify-center gap-3"><i class="fa-brands fa-line text-xl"></i><span data-i18n="form_submit">ส่งรายละเอียดผ่าน LINE</span></button>
+          <p class="text-xs text-slate-500 leading-5" data-i18n="form_note">เว็บไซต์จะเปิด LINE พร้อมข้อความร่างให้คุณตรวจสอบ การส่งข้อความจะยังไม่เกิดขึ้นจนกว่าคุณจะกดยืนยันใน LINE</p>
+          <p id="formStatus" class="text-sm text-amber-200 hidden" role="status" aria-live="polite"></p>
+        </form>
+      </div>
+    </section>
+
+    <!-- Contact CTA -->
+    <section id="contact" class="py-20">
+      <div class="max-w-5xl mx-auto px-4 sm:px-6 text-center">
+        <div class="rounded-3xl border border-amber-300/20 bg-gradient-to-br from-amber-400/10 via-white/[.025] to-blue-500/10 p-7 sm:p-12">
+          <p class="section-kicker" data-i18n="contact_kicker">Let's Get You There</p>
+          <h2 class="text-3xl sm:text-4xl font-semibold mt-3" data-i18n="contact_title">พร้อมวางแผนการเดินทางหรือยัง?</h2>
+          <p class="text-slate-300 mt-4 max-w-2xl mx-auto leading-7" data-i18n="contact_desc">ติดต่อ ALAN CAR SERVICE เพื่อสอบถามเส้นทาง ราคา และรายละเอียดการให้บริการก่อนยืนยันการจอง</p>
+          <div class="flex flex-col sm:flex-row justify-center gap-3 mt-8">
+            <a href="https://line.me/ti/p/~alancarservice" target="_blank" rel="noopener noreferrer" class="focus-ring inline-flex items-center justify-center gap-3 rounded-xl bg-amber-400 hover:bg-amber-300 text-slate-950 font-bold px-7 py-4 transition"><i class="fa-brands fa-line text-xl"></i><span data-i18n="contact_line">ติดต่อผ่าน LINE</span></a>
+            <a href="#booking" class="focus-ring inline-flex items-center justify-center gap-3 rounded-xl border border-white/20 hover:bg-white/5 px-7 py-4 font-semibold transition"><i class="fa-solid fa-clipboard-list text-amber-300"></i><span data-i18n="contact_form">กรอกข้อมูลการเดินทาง</span></a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="border-t border-white/10 bg-black/20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
+      <div><p class="font-bold tracking-wide">ALAN CAR SERVICE</p><p class="text-xs text-slate-500 mt-1">VIP Private Chauffeur</p></div>
+      <p class="text-xs sm:text-sm text-slate-500" data-i18n="footer_text">บริการรถรับส่งสนามบิน • รถพร้อมคนขับ • ท่องเที่ยวทั่วไทย</p>
+      <a href="https://line.me/ti/p/~alancarservice" target="_blank" rel="noopener noreferrer" class="text-amber-300 hover:text-amber-200 text-sm"><i class="fa-brands fa-line mr-2"></i>LINE: alancarservice</a>
+    </div>
+    <div class="text-center text-xs text-slate-600 pb-5">© <span id="year"></span> ALAN CAR SERVICE. All rights reserved.</div>
+  </footer>
+
+  <!-- Mobile sticky contact action -->
+  <div class="md:hidden fixed bottom-0 inset-x-0 z-40 p-3 bg-[#0b1220]/95 backdrop-blur-xl border-t border-white/10">
+    <a href="https://line.me/ti/p/~alancarservice" target="_blank" rel="noopener noreferrer" class="focus-ring flex items-center justify-center gap-2 rounded-xl bg-amber-400 text-slate-950 font-bold py-3 shadow-glow"><i class="fa-brands fa-line text-xl"></i><span data-i18n="sticky_line">แชต LINE เพื่อจองรถ</span></a>
+  </div>
+  <div class="h-20 md:hidden" aria-hidden="true"></div>
+
+  <script>
+    const translations = {
+      th: {
+        nav_services:'บริการของเรา',nav_fleet:'รถบริการ',nav_destinations:'เส้นทางยอดนิยม',nav_booking:'จองรถ',nav_contact:'ติดต่อเรา',nav_line:'แอดไลน์จองด่วน',
+        hero_badge:'บริการรถส่วนตัวระดับ VIP',hero_title_1:'เดินทางอย่างมีระดับ',hero_title_2:'ไปกับ ALAN CAR SERVICE',hero_desc:'บริการรถรับส่งสนามบิน รถพร้อมคนขับ และเดินทางท่องเที่ยวทั่วไทย ใส่ใจทุกเส้นทาง สะดวกสบาย ตรงเวลา และเป็นส่วนตัว',hero_book:'สอบถามราคา / จองรถ',hero_line:'แชตผ่าน LINE',hero_point1:'รับส่งสนามบิน',hero_point2:'เดินทางทั่วไทย',hero_point3:'บริการส่วนตัว',
+        trust1_title:'ตรงต่อเวลา',trust1_desc:'วางแผนการเดินทางอย่างใส่ใจ',trust2_title:'สะดวกสบาย',trust2_desc:'เดินทางแบบส่วนตัวตามแผนของคุณ',trust3_title:'สื่อสารชัดเจน',trust3_desc:'สอบถามเส้นทางและราคาได้ก่อนเดินทาง',
+        services_kicker:'Our Services',services_title:'บริการที่ออกแบบเพื่อการเดินทางของคุณ',services_desc:'เลือกใช้บริการได้ตามจุดหมายและแผนการเดินทาง ติดต่อสอบถามรายละเอียดและราคาได้โดยตรง',
+        service1_title:'รับส่งสนามบิน',service1_desc:'รับส่งสนามบินสุวรรณภูมิและดอนเมือง นัดหมายล่วงหน้าเพื่อการเดินทางที่ราบรื่น',service2_title:'รถพร้อมคนขับ',service2_desc:'เดินทางในกรุงเทพฯ ติดต่อธุรกิจ รับรองแขก หรือเดินทางตามกำหนดการของคุณ',service3_title:'ท่องเที่ยวทั่วไทย',service3_desc:'เดินทางข้ามจังหวัด เที่ยวแบบส่วนตัว หรือวางแผนเส้นทางตามความต้องการ',service4_title:'รับรองลูกค้าธุรกิจ',service4_desc:'เหมาะสำหรับนัดหมายทางธุรกิจ งานประชุม และการเดินทางของผู้บริหาร',service5_title:'เดินทางเป็นครอบครัว',service5_desc:'แจ้งจำนวนผู้โดยสารและสัมภาระ เพื่อช่วยเลือกประเภทรถให้เหมาะสม',service6_title:'จองล่วงหน้า',service6_desc:'แจ้งวัน เวลา จุดรับและจุดหมาย เพื่อประเมินราคาและยืนยันรายละเอียดก่อนเดินทาง',
+        fleet_kicker:'Your Ride, Your Way',fleet_title:'เลือกรถให้เหมาะกับการเดินทาง',fleet_desc:'ประเภทรถและจำนวนที่นั่งขึ้นอยู่กับรถที่ให้บริการในวันเดินทาง กรุณาสอบถามและแจ้งจำนวนผู้โดยสารพร้อมสัมภาระก่อนยืนยันการจอง',fleet_item1:'แจ้งจำนวนผู้โดยสารและกระเป๋าเดินทาง',fleet_item2:'แจ้งเส้นทางและจุดแวะระหว่างทาง',fleet_item3:'สอบถามค่าทางด่วนและค่าใช้จ่ายเพิ่มเติมก่อนจอง',fleet_cta:'สอบถามรถและราคา',
+        dest_kicker:'Popular Routes',dest_title:'เดินทางไปได้หลายจุดหมาย',dest_desc:'ตัวอย่างเส้นทางที่ลูกค้าสามารถสอบถามบริการได้ โดยราคาแตกต่างตามระยะทาง เวลา และรายละเอียดการเดินทาง',dest1_title:'กรุงเทพฯ',dest1_desc:'เดินทางในเมืองและรับส่งตามนัดหมาย',dest2_title:'สุวรรณภูมิ / ดอนเมือง',dest2_desc:'บริการรับส่งสนามบินตามเวลานัดหมาย',dest3_title:'พัทยา / ชลบุรี',dest3_desc:'เดินทางพักผ่อนหรือทำธุรกิจ',dest4_title:'ท่องเที่ยวทั่วไทย',dest4_desc:'สอบถามเส้นทางตามแผนของคุณ',
+        booking_kicker:'Plan Your Trip',booking_title:'แจ้งรายละเอียดการเดินทาง',booking_desc:'กรอกข้อมูลเบื้องต้น แล้วกดส่งข้อความเพื่อเปิด LINE พร้อมรายละเอียดที่กรอกไว้ให้ตรวจสอบก่อนส่งจริง',booking_tip1:'แจ้งจุดรับและจุดส่งให้ชัดเจน',booking_tip2:'ระบุวันและเวลาที่ต้องการเดินทาง',booking_tip3:'ยืนยันราคา ค่าทางด่วน และค่าใช้จ่ายอื่นก่อนตกลง',
+        form_name:'ชื่อผู้ติดต่อ',form_phone:'เบอร์ติดต่อ / LINE',form_pickup:'จุดรับ',form_destination:'จุดหมาย',form_date:'วันที่เดินทาง',form_time:'เวลา',form_passengers:'จำนวนผู้โดยสาร',form_luggage:'สัมภาระ / รายละเอียดเพิ่มเติม',form_name_ph:'ชื่อของคุณ',form_phone_ph:'เบอร์โทรหรือ LINE ID',form_pickup_ph:'เช่น สนามบินสุวรรณภูมิ',form_destination_ph:'สถานที่ปลายทาง',form_luggage_ph:'จำนวนกระเป๋า จุดแวะ ฯลฯ',form_submit:'ส่งรายละเอียดผ่าน LINE',form_note:'เว็บไซต์จะเปิด LINE พร้อมข้อความร่างให้คุณตรวจสอบ การส่งข้อความจะยังไม่เกิดขึ้นจนกว่าคุณจะกดยืนยันใน LINE',
+        contact_kicker:"Let's Get You There",contact_title:'พร้อมวางแผนการเดินทางหรือยัง?',contact_desc:'ติดต่อ ALAN CAR SERVICE เพื่อสอบถามเส้นทาง ราคา และรายละเอียดการให้บริการก่อนยืนยันการจอง',contact_line:'ติดต่อผ่าน LINE',contact_form:'กรอกข้อมูลการเดินทาง',footer_text:'บริการรถรับส่งสนามบิน • รถพร้อมคนขับ • ท่องเที่ยวทั่วไทย',sticky_line:'แชต LINE เพื่อจองรถ'
+      },
+      en: {
+        nav_services:'Services',nav_fleet:'Our Vehicles',nav_destinations:'Popular Routes',nav_booking:'Book a Ride',nav_contact:'Contact',nav_line:'Book via LINE',
+        hero_badge:'VIP Private Chauffeur Service',hero_title_1:'Travel in Comfort and Style',hero_title_2:'with ALAN CAR SERVICE',hero_desc:'Private airport transfers, chauffeur-driven rides and trips throughout Thailand. Thoughtful service, comfortable journeys and reliable arrangements.',hero_book:'Get a Quote / Book',hero_line:'Chat on LINE',hero_point1:'Airport Transfers',hero_point2:'Travel Across Thailand',hero_point3:'Private Service',
+        trust1_title:'Punctual Planning',trust1_desc:'Thoughtful trip coordination',trust2_title:'Comfortable Rides',trust2_desc:'Private travel around your schedule',trust3_title:'Clear Communication',trust3_desc:'Ask about routes and pricing in advance',
+        services_kicker:'Our Services',services_title:'Services Designed Around Your Trip',services_desc:'Choose a service for your destination and itinerary. Contact us directly for details and a quote.',
+        service1_title:'Airport Transfers',service1_desc:'Transfers to and from Suvarnabhumi and Don Mueang airports. Arrange your pickup in advance.',service2_title:'Chauffeur Service',service2_desc:'Travel around Bangkok, attend business meetings or arrange rides to suit your schedule.',service3_title:'Travel Across Thailand',service3_desc:'Interprovincial trips, private tours and custom itineraries.',service4_title:'Business Travel',service4_desc:'Suitable for meetings, corporate visits and executive transportation.',service5_title:'Family Trips',service5_desc:'Tell us your passenger and luggage count so we can advise on a suitable vehicle.',service6_title:'Advance Booking',service6_desc:'Share your date, time, pickup and destination to receive a quote and confirm details.',
+        fleet_kicker:'Your Ride, Your Way',fleet_title:'A Vehicle for Your Journey',fleet_desc:'Available vehicle types and seating depend on the travel date. Please confirm passenger and luggage details before booking.',fleet_item1:'Share passenger and luggage counts',fleet_item2:'Provide your route and any stops',fleet_item3:'Confirm tolls and additional charges in advance',fleet_cta:'Ask About Vehicles & Rates',
+        dest_kicker:'Popular Routes',dest_title:'Go Where You Need to Go',dest_desc:'Example destinations available for inquiry. Prices vary by distance, timing and trip details.',dest1_title:'Bangkok',dest1_desc:'City transfers and scheduled pickups',dest2_title:'Suvarnabhumi / Don Mueang',dest2_desc:'Airport transfers by arrangement',dest3_title:'Pattaya / Chonburi',dest3_desc:'Leisure and business trips',dest4_title:'Travel Across Thailand',dest4_desc:'Ask about a route tailored to your plans',
+        booking_kicker:'Plan Your Trip',booking_title:'Share Your Trip Details',booking_desc:'Complete the form and open LINE with a draft message to review before sending.',booking_tip1:'Provide clear pickup and drop-off locations',booking_tip2:'Specify your preferred date and time',booking_tip3:'Confirm the fare, tolls and other costs before agreeing',
+        form_name:'Contact Name',form_phone:'Phone / LINE ID',form_pickup:'Pickup Location',form_destination:'Destination',form_date:'Travel Date',form_time:'Pickup Time',form_passengers:'Passengers',form_luggage:'Luggage / Extra Details',form_name_ph:'Your name',form_phone_ph:'Phone number or LINE ID',form_pickup_ph:'e.g. Suvarnabhumi Airport',form_destination_ph:'Destination address',form_luggage_ph:'Bags, stops, etc.',form_submit:'Continue via LINE',form_note:'LINE will open with a draft message for you to review. Nothing is sent until you confirm in LINE.',
+        contact_kicker:"Let's Get You There",contact_title:'Ready to Plan Your Journey?',contact_desc:'Contact ALAN CAR SERVICE to ask about routes, pricing and service details before confirming.',contact_line:'Contact via LINE',contact_form:'Enter Trip Details',footer_text:'Airport Transfers • Chauffeur Service • Travel Across Thailand',sticky_line:'Chat on LINE to Book'
+      },
+      zh: {
+        nav_services:'服务项目',nav_fleet:'服务车型',nav_destinations:'热门路线',nav_booking:'预约用车',nav_contact:'联系我们',nav_line:'通过 LINE 预约',
+        hero_badge:'VIP 专属司机服务',hero_title_1:'舒适出行，尊享旅程',hero_title_2:'ALAN CAR SERVICE',hero_desc:'提供机场接送、专车司机及泰国各地旅游服务。注重舒适、准时与个性化安排。',hero_book:'询价 / 预约用车',hero_line:'通过 LINE 联系',hero_point1:'机场接送',hero_point2:'泰国各地出行',hero_point3:'私人专属服务',
+        trust1_title:'准时安排',trust1_desc:'用心规划您的行程',trust2_title:'舒适出行',trust2_desc:'按照您的计划灵活出行',trust3_title:'沟通清晰',trust3_desc:'可提前咨询路线和价格',
+        services_kicker:'我们的服务',services_title:'为您的行程量身安排',services_desc:'根据目的地和行程选择服务，欢迎直接联系我们咨询详情与报价。',
+        service1_title:'机场接送',service1_desc:'提供素万那普机场及廊曼机场接送，可提前预约。',service2_title:'专车司机',service2_desc:'适用于曼谷市内出行、商务会面及个性化行程。',service3_title:'泰国各地旅游',service3_desc:'跨府出行、私人旅游及定制路线。',service4_title:'商务接待',service4_desc:'适用于商务会面、会议及高管出行。',service5_title:'家庭出行',service5_desc:'请告知乘客人数和行李数量，以便建议合适车型。',service6_title:'提前预约',service6_desc:'提供日期、时间、上车地点和目的地，以便报价并确认详情。',
+        fleet_kicker:'专属出行',fleet_title:'选择适合您旅程的车辆',fleet_desc:'可用车型及座位数量取决于出行日期，请在确认预约前告知乘客和行李信息。',fleet_item1:'告知乘客人数和行李数量',fleet_item2:'提供路线及中途停靠点',fleet_item3:'提前确认高速费及其他额外费用',fleet_cta:'咨询车型与价格',
+        dest_kicker:'热门路线',dest_title:'前往您想去的目的地',dest_desc:'以下为可咨询的路线示例，价格会因距离、时间及行程详情而有所不同。',dest1_title:'曼谷',dest1_desc:'市内出行及预约接送',dest2_title:'素万那普 / 廊曼机场',dest2_desc:'按预约时间提供机场接送',dest3_title:'芭提雅 / 春武里',dest3_desc:'休闲及商务出行',dest4_title:'泰国各地',dest4_desc:'可根据您的计划咨询路线',
+        booking_kicker:'规划行程',booking_title:'填写出行信息',booking_desc:'填写基本信息后打开 LINE，先检查预设消息再发送。',booking_tip1:'清楚填写上车及下车地点',booking_tip2:'填写出行日期和时间',booking_tip3:'事先确认车费、高速费及其他费用',
+        form_name:'联系人姓名',form_phone:'电话 / LINE ID',form_pickup:'上车地点',form_destination:'目的地',form_date:'出行日期',form_time:'出发时间',form_passengers:'乘客人数',form_luggage:'行李 / 其他详情',form_name_ph:'您的姓名',form_phone_ph:'电话号码或 LINE ID',form_pickup_ph:'例如：素万那普机场',form_destination_ph:'目的地',form_luggage_ph:'行李数量、中途停靠等',form_submit:'通过 LINE 继续',form_note:'LINE 将打开并显示预设消息供您检查。您确认后才会发送。',
+        contact_kicker:'让旅程更轻松',contact_title:'准备好规划您的旅程了吗？',contact_desc:'请联系 ALAN CAR SERVICE 咨询路线、价格及服务详情，再确认预约。',contact_line:'通过 LINE 联系',contact_form:'填写出行信息',footer_text:'机场接送 • 专车司机 • 泰国各地旅游',sticky_line:'通过 LINE 预约用车'
+      },
+      my: {
+        nav_services:'ဝန်ဆောင်မှုများ',nav_fleet:'ကားအမျိုးအစား',nav_destinations:'လူကြိုက်များသောလမ်းကြောင်းများ',nav_booking:'ကားဘွတ်ကင်',nav_contact:'ဆက်သွယ်ရန်',nav_line:'LINE မှ ဘွတ်ကင်လုပ်ရန်',
+        hero_badge:'VIP ကိုယ်ပိုင်ယာဉ်မောင်းဝန်ဆောင်မှု',hero_title_1:'သက်သောင့်သက်သာ ခရီးသွားပါ',hero_title_2:'ALAN CAR SERVICE နှင့်',hero_desc:'လေဆိပ်ကြိုပို့၊ ယာဉ်မောင်းပါကားနှင့် ထိုင်းနိုင်ငံတစ်ဝန်း ခရီးသွားဝန်ဆောင်မှုများ။ အဆင်ပြေမှု၊ အချိန်မှန်မှုနှင့် ကိုယ်ပိုင်ဝန်ဆောင်မှုကို အလေးထားပါသည်။',hero_book:'ဈေးနှုန်းမေးရန် / ဘွတ်ကင်',hero_line:'LINE မှ ဆက်သွယ်ရန်',hero_point1:'လေဆိပ်ကြိုပို့',hero_point2:'ထိုင်းနိုင်ငံတစ်ဝန်း',hero_point3:'ကိုယ်ပိုင်ဝန်ဆောင်မှု',
+        trust1_title:'အချိန်မှန်',trust1_desc:'ခရီးစဉ်ကို ဂရုတစိုက် စီစဉ်ပေးသည်',trust2_title:'သက်သောင့်သက်သာ',trust2_desc:'သင့်အစီအစဉ်အတိုင်း ကိုယ်ပိုင်ခရီးစဉ်',trust3_title:'ရှင်းလင်းသော ဆက်သွယ်မှု',trust3_desc:'လမ်းကြောင်းနှင့် ဈေးနှုန်းကို ကြိုမေးနိုင်သည်',
+        services_kicker:'ဝန်ဆောင်မှုများ',services_title:'သင့်ခရီးစဉ်အတွက် ဝန်ဆောင်မှုများ',services_desc:'သင့်ခရီးစဉ်နှင့် ဦးတည်ရာအလိုက် ဝန်ဆောင်မှုကို ရွေးချယ်ပြီး အသေးစိတ်နှင့် ဈေးနှုန်းကို မေးမြန်းနိုင်ပါသည်။',
+        service1_title:'လေဆိပ်ကြိုပို့',service1_desc:'သုဝဏ္ဏဘူမိနှင့် ဒွန်မောင်းလေဆိပ်များသို့ ကြိုပို့ဝန်ဆောင်မှု။ ကြိုတင်ချိန်းဆိုနိုင်သည်။',service2_title:'ယာဉ်မောင်းပါကား',service2_desc:'ဘန်ကောက်မြို့တွင်း၊ စီးပွားရေးအစည်းအဝေးနှင့် သင့်အစီအစဉ်အတိုင်း ခရီးသွားရန်။',service3_title:'ထိုင်းနိုင်ငံတစ်ဝန်း ခရီးသွားခြင်း',service3_desc:'ပြည်နယ်အချင်းချင်း ခရီးစဉ်များနှင့် သီးသန့်ခရီးစဉ်များ။',service4_title:'စီးပွားရေးခရီးစဉ်',service4_desc:'အစည်းအဝေးနှင့် အမှုဆောင်များအတွက် သင့်တော်သည်။',service5_title:'မိသားစုခရီးစဉ်',service5_desc:'သင့်တော်သောကားကို အကြံပြုနိုင်ရန် ခရီးသည်နှင့် အိတ်အရေအတွက်ကို ပြောပြပါ။',service6_title:'ကြိုတင်ဘွတ်ကင်',service6_desc:'ရက်စွဲ၊ အချိန်၊ လာယူမည့်နေရာနှင့် သွားမည့်နေရာကို ပြောပြပါ။',
+        fleet_kicker:'သင့်ခရီးစဉ်',fleet_title:'ခရီးစဉ်နှင့် ကိုက်ညီသောကားကို ရွေးပါ',fleet_desc:'ကားအမျိုးအစားနှင့် ထိုင်ခုံအရေအတွက်သည် ခရီးသွားမည့်ရက်တွင် ရရှိနိုင်မှုအပေါ် မူတည်ပါသည်။',fleet_item1:'ခရီးသည်နှင့် အိတ်အရေအတွက် ပြောပြပါ',fleet_item2:'လမ်းကြောင်းနှင့် ရပ်နားမည့်နေရာများ ပြောပြပါ',fleet_item3:'အမြန်လမ်းခနှင့် အပိုကုန်ကျစရိတ်များကို ကြိုအတည်ပြုပါ',fleet_cta:'ကားနှင့် ဈေးနှုန်း မေးရန်',
+        dest_kicker:'လူကြိုက်များသောလမ်းကြောင်းများ',dest_title:'သင်သွားလိုရာသို့ ခရီးသွားပါ',dest_desc:'အောက်ပါလမ်းကြောင်းများအတွက် မေးမြန်းနိုင်ပါသည်။ ဈေးနှုန်းသည် အကွာအဝေး၊ အချိန်နှင့် ခရီးစဉ်အသေးစိတ်အပေါ် မူတည်သည်။',dest1_title:'ဘန်ကောက်',dest1_desc:'မြို့တွင်းခရီးစဉ်နှင့် ကြိုတင်ချိန်းဆိုမှုများ',dest2_title:'သုဝဏ္ဏဘူမိ / ဒွန်မောင်း',dest2_desc:'ချိန်းဆိုထားသည့်အချိန်အတိုင်း လေဆိပ်ကြိုပို့',dest3_title:'ပတ္တယား / ချွန်ဘူရီ',dest3_desc:'အပန်းဖြေခရီးနှင့် စီးပွားရေးခရီး',dest4_title:'ထိုင်းနိုင်ငံတစ်ဝန်း',dest4_desc:'သင့်အစီအစဉ်အလိုက် လမ်းကြောင်းမေးမြန်းပါ',
+        booking_kicker:'ခရီးစဉ်စီစဉ်ရန်',booking_title:'ခရီးစဉ်အသေးစိတ် ဖြည့်ပါ',booking_desc:'အချက်အလက်ဖြည့်ပြီး LINE ကိုဖွင့်ကာ ပေးပို့မည့်စာကို စစ်ဆေးနိုင်ပါသည်။',booking_tip1:'လာယူမည့်နှင့် ပို့ဆောင်မည့်နေရာကို ရှင်းလင်းစွာ ဖြည့်ပါ',booking_tip2:'ရက်စွဲနှင့် အချိန်ကို ဖော်ပြပါ',booking_tip3:'ကားခ၊ အမြန်လမ်းခနှင့် အခြားကုန်ကျစရိတ်များကို ကြိုအတည်ပြုပါ',
+        form_name:'ဆက်သွယ်ရန်အမည်',form_phone:'ဖုန်း / LINE ID',form_pickup:'လာယူမည့်နေရာ',form_destination:'သွားမည့်နေရာ',form_date:'ခရီးသွားမည့်ရက်',form_time:'အချိန်',form_passengers:'ခရီးသည်အရေအတွက်',form_luggage:'အိတ် / အခြားအသေးစိတ်',form_name_ph:'သင့်အမည်',form_phone_ph:'ဖုန်းနံပါတ် သို့မဟုတ် LINE ID',form_pickup_ph:'ဥပမာ - သုဝဏ္ဏဘူမိလေဆိပ်',form_destination_ph:'သွားမည့်နေရာ',form_luggage_ph:'အိတ်အရေအတွက်၊ ရပ်နားရန်နေရာ စသည်',form_submit:'LINE မှ ဆက်လက်လုပ်ဆောင်ရန်',form_note:'LINE တွင် စာမူကြမ်းကို ဖွင့်ပြမည်ဖြစ်ပြီး သင်အတည်ပြုပြီးမှသာ ပေးပို့မည်ဖြစ်သည်။',
+        contact_kicker:'သင့်ခရီးကို စတင်လိုက်ပါ',contact_title:'ခရီးစဉ်စီစဉ်ရန် အသင့်ဖြစ်ပြီလား။',contact_desc:'လမ်းကြောင်း၊ ဈေးနှုန်းနှင့် ဝန်ဆောင်မှုအသေးစိတ်ကို ALAN CAR SERVICE ထံ ဆက်သွယ်မေးမြန်းပါ။',contact_line:'LINE မှ ဆက်သွယ်ရန်',contact_form:'ခရီးစဉ်အချက်အလက်ဖြည့်ရန်',footer_text:'လေဆိပ်ကြိုပို့ • ယာဉ်မောင်းပါကား • ထိုင်းနိုင်ငံတစ်ဝန်း ခရီးသွားခြင်း',sticky_line:'ကားဘွတ်ကင်အတွက် LINE မှ ဆက်သွယ်ပါ'
+      }
+    };
+
+    const languageSelect = document.getElementById('languageSelect');
+    const mobileLanguageSelect = document.getElementById('mobileLanguageSelect');
+    function setLanguage(lang) {
+      const dict = translations[lang] || translations.th;
+      document.documentElement.lang = lang === 'my' ? 'my' : lang;
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (dict[key]) el.textContent = dict[key];
+      });
+      document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+        const key = el.getAttribute('data-i18n-placeholder');
+        if (dict[key]) el.placeholder = dict[key];
+      });
+      languageSelect.value = lang;
+      mobileLanguageSelect.value = lang;
+      try { localStorage.setItem('alanLanguage', lang); } catch (e) {}
+    }
+    languageSelect.addEventListener('change', e => setLanguage(e.target.value));
+    mobileLanguageSelect.addEventListener('change', e => setLanguage(e.target.value));
+
+    const menuButton = document.getElementById('mobileMenuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    menuButton.addEventListener('click', () => {
+      const open = mobileMenu.classList.toggle('open');
+      menuButton.setAttribute('aria-expanded', String(open));
+      menuButton.innerHTML = open ? '<i class="fa-solid fa-xmark"></i>' : '<i class="fa-solid fa-bars"></i>';
+    });
+    mobileMenu.querySelectorAll('a').forEach(link => link.addEventListener('click', () => {
+      mobileMenu.classList.remove('open');
+      menuButton.setAttribute('aria-expanded', 'false');
+      menuButton.innerHTML = '<i class="fa-solid fa-bars"></i>';
+    }));
+
+    document.getElementById('bookingForm').addEventListener('submit', function(event) {
+      event.preventDefault();
+      const val = id => (document.getElementById(id).value || '').trim();
+      const lang = languageSelect.value || mobileLanguageSelect.value || 'th';
+      const messageByLang = {
+        th: ['สวัสดีครับ สนใจจองรถกับ ALAN CAR SERVICE','ชื่อ','เบอร์ติดต่อ / LINE','จุดรับ','จุดหมาย','วันที่','เวลา','ผู้โดยสาร','สัมภาระ / รายละเอียด'],
+        en: ['Hello, I would like to book a ride with ALAN CAR SERVICE','Name','Phone / LINE','Pickup','Destination','Date','Time','Passengers','Luggage / details'],
+        zh: ['您好，我想预约 ALAN CAR SERVICE 的用车服务','姓名','电话 / LINE','上车地点','目的地','日期','时间','乘客人数','行李 / 详情'],
+        my: ['မင်္ဂလာပါ။ ALAN CAR SERVICE ကားဘွတ်ကင်လုပ်လိုပါသည်','အမည်','ဖုန်း / LINE','လာယူမည့်နေရာ','သွားမည့်နေရာ','ရက်စွဲ','အချိန်','ခရီးသည်','အိတ် / အသေးစိတ်']
+      };
+      const labels = messageByLang[lang] || messageByLang.th;
+      const fields = [val('customerName'), val('phone'), val('pickup'), val('destination'), val('tripDate'), val('tripTime'), val('passengers'), val('luggage')];
+      const message = labels[0] + '\n' +
+        labels[1] + ': ' + (fields[0] || '-') + '\n' +
+        labels[2] + ': ' + (fields[1] || '-') + '\n' +
+        labels[3] + ': ' + fields[2] + '\n' +
+        labels[4] + ': ' + fields[3] + '\n' +
+        labels[5] + ': ' + (fields[4] || '-') + '\n' +
+        labels[6] + ': ' + (fields[5] || '-') + '\n' +
+        labels[7] + ': ' + fields[6] + '\n' +
+        labels[8] + ': ' + (fields[7] || '-');
+      const status = document.getElementById('formStatus');
+      status.textContent = lang === 'en' ? 'Opening LINE with a draft message. Please review and send it in LINE.' : lang === 'zh' ? '正在打开 LINE 草稿，请检查后发送。' : lang === 'my' ? 'LINE တွင် စာမူကြမ်းကို ဖွင့်နေပါသည်။ စစ်ဆေးပြီး ပေးပို့ပါ။' : 'กำลังเปิด LINE พร้อมข้อความร่าง กรุณาตรวจสอบแล้วกดส่งใน LINE';
+      status.classList.remove('hidden');
+      const url = 'https://line.me/R/msg/text/?' + encodeURIComponent(message);
+      window.open(url, '_blank', 'noopener,noreferrer');
+    });
+
+    document.getElementById('year').textContent = new Date().getFullYear();
+    let initialLang = 'th';
+    try {
+      const saved = localStorage.getItem('alanLanguage');
+      if (saved && translations[saved]) initialLang = saved;
+    } catch (e) {}
+    setLanguage(initialLang);
+  </script>
+</body>
+</html>
